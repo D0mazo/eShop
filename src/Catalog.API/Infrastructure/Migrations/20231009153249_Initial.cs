@@ -14,9 +14,7 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
             migrationBuilder.AlterDatabase()
                 .Annotation("Npgsql:PostgresExtension:vector", ",,");
 
-            migrationBuilder.CreateSequence(
-                name: "catalog_brand_hilo",
-                incrementBy: 10);
+
 
             migrationBuilder.CreateSequence(
                 name: "catalog_hilo",
@@ -26,17 +24,7 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                 name: "catalog_type_hilo",
                 incrementBy: 10);
 
-            migrationBuilder.CreateTable(
-                name: "CatalogBrand",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false),
-                    Brand = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CatalogBrand", x => x.Id);
-                });
+            
 
             migrationBuilder.CreateTable(
                 name: "CatalogType",
@@ -60,7 +48,6 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
                     PictureFileName = table.Column<string>(type: "text", nullable: true),
                     CatalogTypeId = table.Column<int>(type: "integer", nullable: false),
-                    CatalogBrandId = table.Column<int>(type: "integer", nullable: false),
                     AvailableStock = table.Column<int>(type: "integer", nullable: false),
                     RestockThreshold = table.Column<int>(type: "integer", nullable: false),
                     MaxStockThreshold = table.Column<int>(type: "integer", nullable: false),
@@ -71,12 +58,6 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Catalog", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Catalog_CatalogBrand_CatalogBrandId",
-                        column: x => x.CatalogBrandId,
-                        principalTable: "CatalogBrand",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Catalog_CatalogType_CatalogTypeId",
                         column: x => x.CatalogTypeId,
                         principalTable: "CatalogType",
@@ -84,10 +65,6 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Catalog_CatalogBrandId",
-                table: "Catalog",
-                column: "CatalogBrandId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Catalog_CatalogTypeId",
@@ -100,9 +77,6 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Catalog");
-
-            migrationBuilder.DropTable(
-                name: "CatalogBrand");
 
             migrationBuilder.DropTable(
                 name: "CatalogType");

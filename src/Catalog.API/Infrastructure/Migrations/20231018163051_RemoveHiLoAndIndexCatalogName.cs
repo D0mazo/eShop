@@ -11,8 +11,6 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropSequence(
-                name: "catalog_brand_hilo");
 
             migrationBuilder.DropSequence(
                 name: "catalog_hilo");
@@ -29,14 +27,6 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                 oldType: "integer")
                 .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "CatalogBrand",
-                type: "integer",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "integer")
-                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<int>(
                 name: "Id",
@@ -60,9 +50,6 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                 name: "IX_Catalog_Name",
                 table: "Catalog");
 
-            migrationBuilder.CreateSequence(
-                name: "catalog_brand_hilo",
-                incrementBy: 10);
 
             migrationBuilder.CreateSequence(
                 name: "catalog_hilo",
@@ -75,15 +62,6 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
             migrationBuilder.AlterColumn<int>(
                 name: "Id",
                 table: "CatalogType",
-                type: "integer",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "integer")
-                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "CatalogBrand",
                 type: "integer",
                 nullable: false,
                 oldClrType: typeof(int),

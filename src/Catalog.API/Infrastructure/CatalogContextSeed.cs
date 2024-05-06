@@ -25,11 +25,6 @@ public partial class CatalogContextSeed(
             var sourceJson = File.ReadAllText(sourcePath);
             var sourceItems = JsonSerializer.Deserialize<CatalogSourceEntry[]>(sourceJson);
 
-            context.CatalogBrands.RemoveRange(context.CatalogBrands);
-            await context.CatalogBrands.AddRangeAsync(sourceItems.Select(x => x.Brand).Distinct()
-                .Select(brandName => new CatalogBrand { Brand = brandName }));
-            logger.LogInformation("Seeded catalog with {NumBrands} brands", context.CatalogBrands.Count());
-
             context.CatalogTypes.RemoveRange(context.CatalogTypes);
             await context.CatalogTypes.AddRangeAsync(sourceItems.Select(x => x.Type).Distinct()
                 .Select(typeName => new CatalogType { Type = typeName }));
@@ -37,7 +32,7 @@ public partial class CatalogContextSeed(
 
             await context.SaveChangesAsync();
 
-            var brandIdsByName = await context.CatalogBrands.ToDictionaryAsync(x => x.Brand, x => x.Id);
+
             var typeIdsByName = await context.CatalogTypes.ToDictionaryAsync(x => x.Type, x => x.Id);
 
             await context.CatalogItems.AddRangeAsync(sourceItems.Select(source => new CatalogItem
@@ -46,7 +41,6 @@ public partial class CatalogContextSeed(
                 Name = source.Name,
                 Description = source.Description,
                 Price = source.Price,
-                CatalogBrandId = brandIdsByName[source.Brand],
                 CatalogTypeId = typeIdsByName[source.Type],
                 AvailableStock = 100,
                 MaxStockThreshold = 200,

@@ -20,10 +20,10 @@ public static class CatalogApi
         api.MapGet("/items/withsemanticrelevance/{text:minlength(1)}", GetItemsBySemanticRelevance);
 
         // Routes for resolving catalog items by type and brand.
-        api.MapGet("/items/type/{typeId}/brand/{brandId?}", GetItemsByBrandAndTypeId);
+        api.MapGet("/items/type/{typeId}", GetItemsByBrandAndTypeId);
         api.MapGet("/items/type/all/brand/{brandId:int?}", GetItemsByBrandId);
         api.MapGet("/catalogtypes", async (CatalogContext context) => await context.CatalogTypes.OrderBy(x => x.Type).ToListAsync());
-        api.MapGet("/catalogbrands", async (CatalogContext context) => await context.CatalogBrands.OrderBy(x => x.Brand).ToListAsync());
+
 
         // Routes for modifying catalog items.
         api.MapPut("/items", UpdateItem);
@@ -69,7 +69,7 @@ public static class CatalogApi
             return TypedResults.BadRequest("Id is not valid.");
         }
 
-        var item = await services.Context.CatalogItems.Include(ci => ci.CatalogBrand).SingleOrDefaultAsync(ci => ci.Id == id);
+        var item = await services.Context.CatalogItems.SingleOrDefaultAsync(ci => ci.Id == id);
 
         if (item == null)
         {
@@ -168,18 +168,14 @@ public static class CatalogApi
     public static async Task<Ok<PaginatedItems<CatalogItem>>> GetItemsByBrandAndTypeId(
         [AsParameters] PaginationRequest paginationRequest,
         [AsParameters] CatalogServices services,
-        int typeId,
-        int? brandId)
+        int typeId)
     {
         var pageSize = paginationRequest.PageSize;
         var pageIndex = paginationRequest.PageIndex;
 
         var root = (IQueryable<CatalogItem>)services.Context.CatalogItems;
         root = root.Where(c => c.CatalogTypeId == typeId);
-        if (brandId is not null)
-        {
-            root = root.Where(c => c.CatalogBrandId == brandId);
-        }
+
 
         var totalItems = await root
             .LongCountAsync();
@@ -194,18 +190,12 @@ public static class CatalogApi
 
     public static async Task<Ok<PaginatedItems<CatalogItem>>> GetItemsByBrandId(
         [AsParameters] PaginationRequest paginationRequest,
-        [AsParameters] CatalogServices services,
-        int? brandId)
+        [AsParameters] CatalogServices services)
     {
         var pageSize = paginationRequest.PageSize;
         var pageIndex = paginationRequest.PageIndex;
 
         var root = (IQueryable<CatalogItem>)services.Context.CatalogItems;
-
-        if (brandId is not null)
-        {
-            root = root.Where(ci => ci.CatalogBrandId == brandId);
-        }
 
         var totalItems = await root
             .LongCountAsync();
@@ -262,7 +252,6 @@ public static class CatalogApi
         var item = new CatalogItem
         {
             Id = product.Id,
-            CatalogBrandId = product.CatalogBrandId,
             CatalogTypeId = product.CatalogTypeId,
             Description = product.Description,
             Name = product.Name,

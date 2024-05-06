@@ -14,9 +14,9 @@ public class CatalogService(HttpClient httpClient)
         return httpClient.GetFromJsonAsync<CatalogItem>(uri);
     }
 
-    public async Task<CatalogResult> GetCatalogItems(int pageIndex, int pageSize, int? brand, int? type)
+    public async Task<CatalogResult> GetCatalogItems(int pageIndex, int pageSize, int? type)
     {
-        var uri = GetAllCatalogItemsUri(remoteServiceBaseUrl, pageIndex, pageSize, brand, type);
+        var uri = GetAllCatalogItemsUri(remoteServiceBaseUrl, pageIndex, pageSize, type);
         var result = await httpClient.GetFromJsonAsync<CatalogResult>(uri);
         return result!;
     }
@@ -49,20 +49,15 @@ public class CatalogService(HttpClient httpClient)
         return result!;
     }
 
-    private static string GetAllCatalogItemsUri(string baseUri, int pageIndex, int pageSize, int? brand, int? type)
+    private static string GetAllCatalogItemsUri(string baseUri, int pageIndex, int pageSize, int? type)
     {
         string filterQs;
 
         if (type.HasValue)
         {
-            var brandQs = brand.HasValue ? brand.Value.ToString() : string.Empty;
-            filterQs = $"/type/{type.Value}/brand/{brandQs}";
 
-        }
-        else if (brand.HasValue)
-        {
-            var brandQs = brand.HasValue ? brand.Value.ToString() : string.Empty;
-            filterQs = $"/type/all/brand/{brandQs}";
+            filterQs = $"/type/{type.Value}";
+
         }
         else
         {

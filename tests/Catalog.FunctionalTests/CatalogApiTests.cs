@@ -213,7 +213,6 @@ public sealed class CatalogApiTests : IClassFixture<CatalogApiFixture>
         Assert.Equal(0, result.PageIndex);
         Assert.Equal(5, result.PageSize);
         Assert.Equal(3, result.Data.ToList().FirstOrDefault().CatalogTypeId);
-        Assert.Equal(3, result.Data.ToList().FirstOrDefault().CatalogBrandId);
     }
 
     [Fact]
@@ -232,7 +231,6 @@ public sealed class CatalogApiTests : IClassFixture<CatalogApiFixture>
         Assert.Equal(11, result.Count);
         Assert.Equal(0, result.PageIndex);
         Assert.Equal(5, result.PageSize);
-        Assert.Equal(3, result.Data.ToList().FirstOrDefault().CatalogBrandId);
     }
 
     [Fact]
@@ -279,8 +277,6 @@ public sealed class CatalogApiTests : IClassFixture<CatalogApiFixture>
             PictureFileName = null,
             CatalogTypeId = 8,
             CatalogType = null,
-            CatalogBrandId = 13,
-            CatalogBrand = null,
             AvailableStock = 100,
             RestockThreshold = 10,
             MaxStockThreshold = 200,
