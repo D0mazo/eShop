@@ -8,6 +8,7 @@
 
 p:first-of-type {
     margin-top: 0;
+    color: #1EBBD7;
 }
 
 img {
@@ -28,10 +29,11 @@ img {
 .price {
     font-size: 1.6rem;
     font-weight: 600;
+    color: #1EBBD7;
 }
 
 .add-to-cart button {
-    background-color: black;
+    background-color: #00364E;
     color: white;
     border-radius: .25rem;
     border: 0;

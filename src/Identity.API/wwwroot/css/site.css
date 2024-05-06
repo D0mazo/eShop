@@ -127,7 +127,8 @@
 body {
     margin-top: 0;
     font-family: 'Plus Jakarta Sans';
-    min-width:480px;
+    min-width: 480px;
+    background: #E6F4F1;
 }
 
 .content {
@@ -135,7 +136,7 @@ body {
 }
 
 .welcome-page {
-    background: #fff;
+    background: #E6F4F1;
     max-width: 60rem;
     margin: auto;
     padding: 3rem;
@@ -187,26 +188,26 @@ body {
     bottom: 3rem;
 }
 
-.eshop-header-intro h1 {
-    color: #000;
-    font-size: 3.5rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
-    margin: 0;
-}
+    .eshop-header-intro h1 {
+        color: #00364E;
+        font-size: 3.5rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 100%;
+        margin: 0;
+    }
 
-.eshop-header-intro p {
-    color: #000;
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 125%;
-    margin: 0;
-}
+    .eshop-header-intro p {
+        color: #00364E;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 125%;
+        margin: 0;
+    }
 
 .eshop-header .logo-header {
-    color: black;
+    color: #1EBBD7;
     margin-right: auto;
 }
 
@@ -221,7 +222,7 @@ body {
 
 .eshop-footer {
     margin-top: 3.5rem;
-    background-color: #000;
+    background-color: #00364E;
     width: 100%;
 }
 
@@ -232,14 +233,15 @@ body {
 
 .eshop-footer-row {
     padding: 3.5rem 10rem;
-    color: white;
+    color: #1EBBD7;
+    background: #00364E;
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
 }
 
 .eshop-footer .logo-footer {
-    color: white;
+    color: #1EBBD7;
     margin-right: auto;
 }
 
@@ -252,41 +254,41 @@ body {
     gap: 20px;
     flex: 1 0 0;
     align-self: stretch;
-    background: #FFF;
+    background: #E6F4F1;
     box-shadow: 0px 3.38082px 3.38082px 0px rgba(0, 0, 0, 0.01), 0px 27px 27px 0px rgba(0, 0, 0, 0.03);
 }
 
-.login-container h2 {
-    color: #000;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 48px; 
-}
+    .login-container h2 {
+        color: #00364E;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 48px;
+    }
 
-.login-container label {
-    color: #444;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-}
+    .login-container label {
+        color: #00364E;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
 
-.login-container input {
-    border: 1px solid #000;
-    background: #FFF;
-    max-width: 100%;
-    border-radius: 0;
-    color: #000;
-}
+    .login-container input {
+        border: 1px solid #00364E;
+        background: #E6F4F1;
+        max-width: 100%;
+        border-radius: 0;
+        color: #00364E;
+    }
 
-.login-container input {
-    border: 1px solid #000;
-    background: #FFF;
-    max-width: 100%;
-    border-radius: 0;
-    color: #000;
-}
+    .login-container input {
+        border: 1px solid #00364E;
+        background: #E6F4F1;
+        max-width: 100%;
+        border-radius: 0;
+        color: #00364E;
+    }
 
 .login-container .form-check {
     display: flex;
@@ -305,16 +307,16 @@ body {
     background-size: contain;
 }
 
-.login-container .btn.btn-primary {
-    border-radius: 0;
-    display: flex;
-    padding: 12px 24px;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 8px;
-    align-self: stretch;
-    background: #000;
-}
+    .login-container .btn.btn-primary {
+        border-radius: 0;
+        display: flex;
+        padding: 12px 24px;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 8px;
+        align-self: stretch;
+        background: #00364E;
+    }
 
 .icon {
   position: relative;

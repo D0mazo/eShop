@@ -11,7 +11,7 @@
                     <form asp-route="Login">
                         <input type="hidden" asp-for="ReturnUrl" />
                         <div class="login-container">
-                            <h2>Login</h2>
+                            <h2>Prisijungimas</h2>
                             <partial name="_ValidationSummary" />
                             <div class="form-group">
                                 <label asp-for="Username"></label>
@@ -27,16 +27,16 @@
                                     <div class="form-check">
                                         <input class="form-check-input" asp-for="RememberLogin">
                                         <label class="form-check-label" asp-for="RememberLogin">
-                                            Remember me
+                                            Prisiminti Mane
                                         </label>
                                     </div>
                                 </div>
                             }
 
                             <div>
-                                <p>The default users are alice/bob, password: Pass123$</p>
+                                <p> alice/bob, password: Pass123$</p>
                             </div>
-                            <button class="btn btn-primary" name="button" value="login">Login</button>
+                            <button class="btn btn-primary" name="button" value="login" style="background: #FF0000;">Prisijungti</button>
                         </div>
                     </form>
                 </div>
