@@ -26,19 +26,19 @@
     cursor: pointer;
 }
 
-.catalog .catalog-filter .filter-badge {
-    background: #000;
-    color: #FFF;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 0.75rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    line-height: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+    .catalog .catalog-filter .filter-badge {
+        background: #000;
+        color: #00364E;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        line-height: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 .catalog .catalog-filter-group h3 {
     color: #000;
@@ -113,7 +113,7 @@
 
 .page-links ::deep a.active-page {
     color: #F7F7F7;
-    background-color: #000;
+    background-color: #00364E;
 }
 
 
